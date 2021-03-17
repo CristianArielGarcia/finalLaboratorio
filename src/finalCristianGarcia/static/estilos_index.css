@@ -1,0 +1,80 @@
+
+body{
+    min-height: 100vh;
+    background-image: url(https://i.redd.it/dr5cbbya3md01.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+#principal {
+    content: '';
+    position:fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: rgba(0,0,0,.6);
+}
+
+#formulario{ 
+
+    position: relative;
+    z-index: 1;
+
+}
+
+
+
+select{
+    background-color: rgb(255, 255, 255); 
+}
+
+
+
+
+input[type=text]{
+
+    background-color: rgb(255, 255, 255); 
+}
+
+
+input[type=number]{
+
+    background-color: rgb(255, 255, 255); 
+}
+
+input[type=date]{
+
+    background-color: rgb(255, 255, 255); 
+}
+
+input[type=email]{
+    background-color: rgb(255, 255, 255); 
+}
+
+
+input[type=email]:focus{
+    background-color: rgb(226, 224, 221); 
+}
+
+input[type=text]:focus{
+    background-color: rgb(226, 224, 221); 
+}
+
+input[type=date]:focus{
+    background-color: rgb(226, 224, 221); 
+}
+
+input[type=number]:focus{
+    background-color: rgb(226, 224, 221); 
+}
+
+select:focus{
+    background-color: rgb(226, 224, 221); 
+}
+
+
+#nueva-reserva{
+    color: whitesmoke;
+    font-size: 45px;
+}

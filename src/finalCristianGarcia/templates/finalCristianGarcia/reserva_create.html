@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Crear Reserva
+{% endblock %}
+
+{% block content %}
+
+    <div class="col-8">
+        <br>
+        <br>
+        <h2>Nueva Reserva</h2>
+
+        <hr>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" value="Crear" class="btn btn-primary mt-1">
+            <a class="btn btn-danger mx-3 float-right mt-1" href="{% url 'reserva_list' %}">Cancelar</a>
+            <a class="btn btn-primary mx-3 float-right mt-1" href="javascript:window.open('{%url 'huesped_create' %}','','width=800,height=600,left=50,top=50,toolbar=yes');void 0">Crear Huesped</a>
+            <!-- <input value="Crear Huesped" class="btn btn-primary" href=""> -->
+        </form>
+
+    </div>
+
+{% endblock %}
+

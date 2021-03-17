@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Actualizar Reserva
+{% endblock %}
+
+{% block content %}
+    <br>
+    <br>
+    <br>
+    <h2>Actualización de la Reserva
+    
+    </h2>
+    <hr>
+
+    <form method="post" id="reserva_update_form">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" value="Actualizar" class="btn btn-primary mt-3">
+        <a class="btn btn-danger  mt-3 float-right" href="{% url 'reserva_list' %}">Cancelar</a>
+    </form>
+{% endblock %}
+
+
+{% block extra_js %}
+
+
+{% endblock %}

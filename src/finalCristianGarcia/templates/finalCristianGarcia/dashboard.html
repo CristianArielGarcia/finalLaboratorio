@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+
+
+{% block extra_css %}
+
+<!-- importo los estilos del calendario -->
+<link rel="stylesheet" href="{% static 'lib/main.css' %}">
+
+{% endblock %}
+
+
+{% block content %}
+
+
+    {% if user.is_active %}
+    <br>
+    <h2>Dashboard Administrador</h2>
+    <hr>
+    <ul>
+        <li><a class="nav-link d-none d-md-block" href="{% url 'reserva_list' %}">Gestionar Reservas</a></li>
+
+        <li><a class="nav-link d-none d-md-block" href="{% url 'habitacion_list' %}">Gestionar Habitaciones</a></li>
+
+        <li><a class="nav-link d-none d-md-block" href="{% url 'huesped_list' %}">Gestionar Huespedes</a></li>
+
+        <!-- <li><a class="nav-link d-none d-md-block" href="{% url 'home' %}">Gestionar Usuarios</a></li> -->
+
+        <!-- <li><a class="nav-link d-none d-md-block" href="{% url 'home' %}">Gestionar Hotel</a></li> -->
+    </ul>
+
+    {% else %}
+        <br>
+        <h2>No tiene los permisos para visitar esta página!</h2>
+        <a class="btn btn-primary" href="{% url 'home' %}">Volver al Inicio</a>
+    {% endif %}
+
+<div class="container-fluid">
+    <div class="text-center"><h3><strong class="card-title">Todas las reservas</strong></h3></div>
+    
+
+    <div id="calendar" class="container" style="padding: 20px;">
+
+
+    </div>
+
+
+</div>
+
+{% endblock %}
+
+
+{% block extra_js %}
+
+    <!-- importo el js del calendario desde la libreria  -->
+    <script src="{% static 'lib/main.js' %}"></script>
+
+
+    <!-- creo el calendario y le cargo las reservas -->
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function (){
+
+            var calendarUI = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarUI, {
+
+                events: [
+                    {% for reserva in object_list %}
+
+                        {
+                            title: "{{ reserva.huesped.nombre }}", 
+                            start: '{{ reserva.fecha_de_ingreso|date:"Y-m-d"}}',
+                            end: '{{ reserva.fecha_de_egreso|date:"Y-m-d"}}',
+                        },
+
+                    {% endfor %}
+                ]
+
+            });
+
+            calendar.render();
+
+        });
+
+    </script>
+
+{% endblock %}

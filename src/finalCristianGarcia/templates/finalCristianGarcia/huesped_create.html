@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+    Crear Huesped
+{% endblock %}
+
+{% block content %}
+
+    <div class="col-8">
+        <br>
+        <br>
+        <h2>Nuevo Huesped</h2>
+
+        <hr>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" value="Crear" class="btn btn-primary mt-1">
+            <a class="btn btn-danger mx-3 float-right mt-1" href="{% url 'huesped_list' %}">Cancelar</a>
+        </form>
+
+    </div>
+
+{% endblock %}
+

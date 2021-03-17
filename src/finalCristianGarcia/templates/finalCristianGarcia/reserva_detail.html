@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Ver Reserva
+{% endblock %}
+
+{% block content %}
+    <br>
+    <br>
+    <br>
+    <h2>Detalles de la Reserva
+    
+    </h2>
+    <hr>
+
+
+            <div class="col-md-6" >
+                <label for="huesped_reserva">Huesped: </label>
+                <input class="form-control" type="text" disabled = "true" value="{{ reserva.huesped }}"> </input>
+            </div>
+
+            <div class="col-md-6" >
+                <label for="huesped_reserva">Estado de la reserva: </label>
+
+                {% if reserva.estado_reserva == False %}
+                    <input class="form-control" type="text" disabled = "true" value="Pendiente de asignacion"> </input>
+                {% else %}
+                    <input class="form-control" type="text" disabled = "true" value="Asignada"> </input>
+                {% endif %}
+                
+            </div>
+
+            <div class="col-md-6" >
+                <label for="huesped_reserva">Fecha de ingreso: </label>
+                <input class="form-control" type="text" disabled = "true" value="{{ reserva.fecha_de_ingreso }}"> </input>
+            </div>
+
+            <div class="col-md-6" >
+                <label for="huesped_reserva">Fecha de egreso: </label>
+                <input class="form-control" type="text" disabled = "true" value="{{ reserva.fecha_de_egreso }}"> </input>
+            </div>
+
+            <div class="col-md-6" >
+                <label for="huesped_reserva">Cantidad de huespedes: </label>
+                <input class="form-control" type="text" disabled = "true" value="{{ reserva.cantidad_huespedes }}"> </input>
+            </div>
+
+
+    <div class="float-right"><a class="btn btn-danger mt-3 float-right" href="{% url 'reserva_list' %}">Volver</a></div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Habitaciones
+{% endblock %}
+
+{% block content %}
+    <br>
+    <br>
+    <br>
+    <h2>Habitaciones
+    <hr>
+
+    <div class="float-right"><a class="btn btn-primary mx-3 float-right" href="{% url 'habitacion_create' %}">Crear Habitacion</a></div>
+    </h2>
+
+
+    <ul class="list-group">
+
+
+        {% for habitacion in object_list %}
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-4"> <strong>{{ habitacion }} </strong> </div>
+                        <div class="col-8 d-flex justify-content-end ">
+                    <a class="mx-3 float-right btn btn-danger" href="{% url 'habitacion_delete' habitacion.id %}">Eliminar</a>
+                    <a class="mx-3 float-right btn btn-primary" href="{% url 'habitacion_update' habitacion.id %}">Modificar</a>
+                    <a class="mx-3 float-right btn btn-primary" href="{% url 'habitacion_detail' habitacion.id %}">Ver</a>
+                </div>
+                </div>
+            </li>
+        {% endfor %}
+        <div class="col-4">
+            <br>
+            <a class="btn btn-danger mx-3 float-right mt-1" href="{% url 'dashboard' %}">Atras</a>
+        </div>
+    </ul>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Actualizar Habitacion
+{% endblock %}
+
+{% block content %}
+    <br>
+    <br>
+    <br>
+    <h2>Actualización de los datos de la Habitacion
+    
+    </h2>
+    <hr>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" value="Actualizar" class="btn btn-primary mt-3">
+        <a class="btn btn-danger  mt-3 float-right" href="{% url 'habitacion_list' %}">Cancelar</a>
+    </form>
+{% endblock %}

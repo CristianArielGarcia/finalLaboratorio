@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Ver Habitacion
+{% endblock %}
+
+{% block content %}
+    <br>
+    <br>
+    <br>
+    <h2>Detalles de la Habitacion
+    
+    </h2>
+    <hr>
+
+
+            <div class="col-md-6" >
+                <label for="hotel_habitacion">Habitacion en el hotel: </label>
+                <input class="form-control" type="text" disabled = "true" value="{{ habitacion.hotel.nombre }}"> </input>
+            </div>
+
+            <div class="col-md-6" >
+                <label for="precio_habitacion">Precio por noche: </label>
+                <input class="form-control" type="text" disabled = "true" value="{{ habitacion.precio_por_noche }}"> </input>
+            </div>
+
+            <div class="col-md-6" >
+                <label for="plazas_habitacion">Cantidad de plazas: </label>
+                <input class="form-control" type="text" disabled = "true" value="{{ habitacion.cantidad_de_plazas }}"> </input>
+            </div>
+
+            <div class="col-md-6" >
+                <label for="descripcion_habitacion">Descripcion: </label>
+
+                <!-- <textarea name="descripcion_habitacion" rows="10" cols="30" disabled = "true">{{ habitacion.descripcion }}</textarea> -->
+
+                <input class="form-control" type="text" disabled = "true" value="{{ habitacion.descripcion }}"> </input>
+            </div>
+
+            <div class="col-md-6" >
+                <label for="reservas_habitacion">Reservas asociadas: </label>
+
+
+                {% for reserva in habitacion.reservas.all %}
+                    <li class="list-group">
+                        <input class="form-control" type="text" disabled = "true" value="{{ reserva }}"> </input>
+                    </li>
+
+                    
+                {% endfor %}
+            </div>
+
+
+    <div class="float-right"><a class="btn btn-danger mt-3 float-right" href="{% url 'habitacion_list' %}">Volver</a></div>
+{% endblock %}

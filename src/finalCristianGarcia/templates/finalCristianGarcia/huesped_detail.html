@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Ver Huesped
+{% endblock %}
+
+{% block content %}
+    <br>
+    <br>
+    <br>
+    <h2>Detalles del Huesped
+    
+    </h2>
+    <hr>
+
+
+            <div class="col-md-6" >
+                <label for="huesped_reserva">Nombre: </label>
+                <input class="form-control" type="text" disabled = "true" value="{{ huesped.nombre }}"> </input>
+            </div>
+
+            <div class="col-md-6" >
+                <label for="huesped_reserva">Apellido: </label>
+                <input class="form-control" type="text" disabled = "true" value="{{ huesped.apellido }}"> </input>
+            </div>
+
+
+            <div class="col-md-6" >
+                <label for="huesped_reserva">Tipo de documento: </label>
+                <input class="form-control" type="text" disabled = "true" value="{{ huesped.tipo_documento }}"> </input>
+            </div>
+
+
+            <div class="col-md-6" >
+                <label for="huesped_reserva">Numero de documento: </label>
+                <input class="form-control" type="text" disabled = "true" value="{{ huesped.numero_documento }}"> </input>
+            </div>
+
+    <div class="float-right"><a class="btn btn-danger mt-3 float-right" href="{% url 'huesped_list' %}">Volver</a></div>
+{% endblock %}

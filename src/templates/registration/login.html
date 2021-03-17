@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+    Usuario - Login
+{% endblock %}
+
+
+
+{% block content %}
+
+    <div class="container">
+        <br><br><br>
+        <div class="col-4">
+        <h2>Iniciar sesión</h2>
+            <form method="post" >
+                {% csrf_token %}
+                {{ form|crispy }}
+                <br> 
+                <input type="submit" value="Iniciar sesión" class="btn btn-primary">
+                <!-- Return URL after login -->
+                <input type="hidden" name="next" value="{% url 'dashboard' %}">
+            </form>
+        </div>
+
+    </div>
+{% endblock %}
